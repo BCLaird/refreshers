@@ -12,7 +12,7 @@ def merge(nums1, nums2):
     merged = list()
 
     while len(nums1) != 0 and len(nums2) != 0:
-        if nums1[0] < nums2[0]:
+        if nums1[0] <= nums2[0]:
             merged.append(nums1.pop(0))
         else:
             merged.append(nums2.pop(0))
@@ -44,8 +44,18 @@ def merge_sort(nums):
 
 class TestInsertionSort(unittest.TestCase):
 
-    def test_min(self):
+    def test_one(self):
         self.assertEqual([1], merge_sort([1]))
+
+    def test_two(self):
+        unsorted = [2, 1]
+        sorted = [1, 2]
+        self.assertEqual(sorted, merge_sort(unsorted))
+
+    def test_three(self):
+        unsorted = [2, 3, 1]
+        sorted = [1, 2, 3]
+        self.assertEqual(sorted, merge_sort(unsorted))
 
     def test_reversed(self):
         unsorted = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
